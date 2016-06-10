@@ -1,4 +1,4 @@
-#Postgresql server
+#PostgreSQL server
 
 Example of the role of inclusion:
 ```
