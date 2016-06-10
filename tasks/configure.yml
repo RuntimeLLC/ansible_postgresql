@@ -1,0 +1,17 @@
+- name: Configuration postgresql.conf
+  template:
+    src: "postgresql{{version}}.j2"
+    dest: "/etc/postgresql/{{ version }}/main/postgresql.conf"
+    owner: "postgres"
+    group: "postgres"
+    mode: 0640
+  notify: restart postgres
+
+- name: Configuration pg_hba
+  template:
+    src: "pg_hba.j2"
+    dest: "/etc/postgresql/{{ version }}/main/pg_hba.conf"
+    owner: "postgres"
+    group: "postgres"
+    mode: 0640
+  notify: reload postgres

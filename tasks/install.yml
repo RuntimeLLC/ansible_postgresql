@@ -1,0 +1,46 @@
+- name: Check CA certificates
+  apt:
+    pkg: ca-certificates
+    state: present
+
+- name: Add PostgreSQL repository apt-key
+  apt_key:
+    id: "{{ apt_key_id }}"
+    url: "{{ apt_key_url }}"
+    state: present
+
+- name: Add PostgreSQL repository
+  apt_repository:
+    repo: "{{ apt_repository }}"
+    state: present
+  register: pg_repo
+
+- name: Updating apt cache
+  apt:
+    update_cache: yes
+  when: pg_repo.changed
+
+- name: Install PostgreSQL
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - "acl"
+    - "postgresql-{{ version }}"
+    - "postgresql-client-{{ version }}"
+    - "postgresql-contrib-{{ version }}"
+
+- name: Install psycopg2
+  apt:
+    name: "python-psycopg2"
+    state: present
+    cache_valid_time: "{{ apt_cache_valid_time|default (3600) }}"
+  when: pg_users or pg_databases
+
+- name: Configure ACL
+  acl:
+    name: '/tmp'
+    entity: postgres
+    etype: user
+    permissions: r
+  when: pg_users or pg_databases

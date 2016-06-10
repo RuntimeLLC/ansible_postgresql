@@ -1,0 +1,46 @@
+version: 9.5
+listen_addresses: '*'
+port: 5432
+
+pg_users: []
+## Example
+# pg_users:
+#   - name: 'test1'
+#   - name: 'test2'
+#     pass: 'test2_password'
+#   - name: 'test3'
+#     pass: 'test3_password'
+#     role_attr_flags: 'LOGIN'
+
+pg_databases: []
+## Example
+# pg_databases:
+#   - name: 'test1'
+#   - name: 'test2'
+#     owner: 'test2'
+#   - name: 'test3'
+#     encoding: 'UTF-8'
+#     lc_collate: 'en_US.UTF-8'
+#     lc_ctype: 'en_US.UTF-8'
+#     owner: 'test3'
+#     extensions: 
+#       - "pg_buffercache"
+#       - "pg_stat_statements"
+
+pg_hba_params: []
+## Example
+# pg_hba_params:
+#   - "host test1 postgres 127.0.0.1/32 md5"
+#   - "host test2 test2 192.168.100.0/24 md5"   
+
+lc_messages: 'en_US.UTF-8'
+log_line_prefix: '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '
+log_min_duration_statement: '5s'
+log_temp_files: '0'
+log_checkpoints: 'on'
+log_lock_waits: 'on'
+log_autovacuum_min_duration: '0'
+
+apt_key_id: ACCC4CF8
+apt_key_url: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+apt_repository: 'deb http://apt.postgresql.org/pub/repos/apt/ {{ansible_distribution_release}}-pgdg main {{version}}'
