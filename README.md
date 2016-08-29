@@ -1,4 +1,4 @@
-#PostgreSQL server
+#PostgreSQL Server
 
 Example of the role of inclusion:
 ```
@@ -7,7 +7,6 @@ Example of the role of inclusion:
   become_method: sudo
   roles:
     - role: postgresql
-      
       pg_users:
         - name: 'test1'
         - name: 'test2'
@@ -27,7 +26,14 @@ Example of the role of inclusion:
           extensions: 
             - "pg_buffercache"
             - "pg_stat_statements"
-      pg_hba_params:
-        - "host test1 postgres 127.0.0.1/32 md5"
-        - "host test2 test2 192.168.100.0/24 md5"   
+      pg_hba_settings:
+        - { value: 'host test1 postgres 127.0.0.1/32 md5'}
+        - { value: 'host test2 postgres 127.0.0.1/32 md5', state: 'present' }
+        - { value: 'host test2 test2 192.168.100.0/24 md5' }
+        - { value: 'host test3 test2 192.168.100.0/24 md5', state: 'absent'}
+      pg_settings:
+        - { name: 'listen_addresses', value: '*' }
+        - { name: 'lc_messages', value: 'en_US.UTF-8' }
+        - { name: 'log_line_prefix', value: '%t [%p]: [%l-1] ' }
+        - { name: 'log_temp_files', value: '0', state: 'absent' }
 ```

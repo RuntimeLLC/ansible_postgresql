@@ -1,23 +1,19 @@
 - include: install.yml
   tags:
-    - postgresql
     - postgresql-install
 
 - include: configure.yml
   tags:
-    - postgresql
     - postgresql-configure
 
 - meta: flush_handlers
 
 - include: user.yml
   tags:
-    - postgresql
     - postgresql-user
   when: pg_users
 
 - include: database.yml
   tags:
-    - postgresql
     - postgresql-database
   when: pg_databases

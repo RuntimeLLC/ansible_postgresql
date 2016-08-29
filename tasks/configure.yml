@@ -1,17 +1,16 @@
 - name: Configuration postgresql.conf
-  template:
-    src: "postgresql{{version}}.j2"
-    dest: "/etc/postgresql/{{ version }}/main/postgresql.conf"
-    owner: "postgres"
-    group: "postgres"
-    mode: 0640
+  lineinfile:
+    line: "{{ item.name }} = '{{ item.value }}'"
+    state: "{{ item.state|default('present') }}"
+    dest: "/etc/postgresql/{{version}}/main/postgresql.conf"
+    insertafter: '# Add settings for extensions here'
   notify: restart postgres
+  with_items: "{{ pg_settings }}"
 
 - name: Configuration pg_hba
-  template:
-    src: "pg_hba.j2"
+  lineinfile:
+    line: "{{ item.value }}"
+    state: "{{ item.state|default('present') }}"
     dest: "/etc/postgresql/{{ version }}/main/pg_hba.conf"
-    owner: "postgres"
-    group: "postgres"
-    mode: 0640
   notify: reload postgres
+  with_items: "{{ pg_hba_settings }}"

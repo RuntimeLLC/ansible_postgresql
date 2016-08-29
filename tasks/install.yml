@@ -26,15 +26,15 @@
     state: present
   with_items:
     - "acl"
-    - "postgresql-{{ version }}"
-    - "postgresql-client-{{ version }}"
-    - "postgresql-contrib-{{ version }}"
+    - "postgresql-{{version}}"
+    - "postgresql-client-{{version}}"
+    - "postgresql-contrib-{{version}}"
 
 - name: Install psycopg2
   apt:
     name: "python-psycopg2"
     state: present
-    cache_valid_time: "{{ apt_cache_valid_time|default (3600) }}"
+    cache_valid_time: "{{apt_cache_valid_time | default (3600)}}"
   when: pg_users or pg_databases
 
 - name: Configure ACL

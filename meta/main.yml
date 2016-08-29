@@ -1,8 +1,0 @@
-galaxy_info:
-  author: Timur Isanov
-  description: "PostgreSQL installation"
-  company: RuntimeLLC
-  min_ansible_version: 2.1
-  platforms:
-  - name: Ubuntu
-    - trusty

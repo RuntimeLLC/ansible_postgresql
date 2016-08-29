@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars_files:
+    - defaults/main.yml
+    - vars/.test.yml
+  handlers:
+    - include: handlers/main.yml
+  tasks:
+    - include: tasks/main.yml
