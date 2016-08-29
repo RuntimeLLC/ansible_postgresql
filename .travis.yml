@@ -10,4 +10,4 @@ install:
 
 script:
   - ansible-playbook .test.yml -i .test --syntax-check
-  - ansible-playbook .test.yml -i .test
+  - ansible-playbook .test.yml -i .test --connection=local
