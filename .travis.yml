@@ -8,6 +8,13 @@ before_install:
 install:
   - pip install ansible
 
+before_script:
+  - sudo /etc/init.d/postgresql stop
+  - sudo apt-get -y remove --purge postgresql-9.1
+  - sudo apt-get -y remove --purge postgresql-9.2
+  - sudo apt-get -y remove --purge postgresql-9.3
+  - sudo apt-get -y remove --purge postgresql-9.4
+
 script:
   - ansible-playbook .test.yml -i .test --syntax-check
   - ansible-playbook .test.yml -i .test --connection=local --sudo
