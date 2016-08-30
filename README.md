@@ -29,7 +29,7 @@ Example of the role of inclusion:
       pg_hba_settings:
         - { value: 'host test1 postgres 127.0.0.1/32 md5'}
         - { value: 'host test2 postgres 127.0.0.1/32 md5', state: 'present' }
-        - { value: 'host test2 test2 192.168.100.0/24 md5' }
+        - { value: 'host test2 test2 192.168.122.0/24 md5' }
         - { value: 'host test3 test2 192.168.100.0/24 md5', state: 'absent'}
       pg_settings:
         - { name: 'listen_addresses', value: '*' }
