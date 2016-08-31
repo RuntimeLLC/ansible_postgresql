@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/RuntimeLLC/ansible_postgresql.svg?branch=master)](https://travis-ci.org/RuntimeLLC/ansible_postgresql)
+
 #PostgreSQL Server
 
 Example of the role of inclusion:

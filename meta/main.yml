@@ -1,6 +1,6 @@
 galaxy_info:
-  author: Timur Isanov
-  description: PostgreSQL role
+  author: 'Timur Isanov'
+  description: 'PostgreSQL role'
   company: RuntimeLLC
 
   license: MIT
