@@ -3,7 +3,6 @@
     line: "{{ item.name }} = '{{ item.value }}'"
     state: "{{ item.state|default('present') }}"
     dest: "/etc/postgresql/{{version}}/main/postgresql.conf"
-    insertafter: '# Add settings for extensions here'
   notify: restart postgres
   with_items: "{{ pg_settings }}"
 
