@@ -1,6 +1,6 @@
 galaxy_info:
-  author: 'Timur Isanov'
-  description: 'PostgreSQL role'
+  author: Timur Isanov
+  description: PostgreSQL role
   company: RuntimeLLC
 
   license: MIT
@@ -12,15 +12,15 @@ galaxy_info:
   platforms:
   - name: Ubuntu
    versions:
-   - precise
-   - quantal
-   - raring
-   - saucy
-   - trusty
-   - utopic
-   - vivid
-   - wily
-   - xenial
+     - precise
+     - quantal
+     - raring
+     - saucy
+     - trusty
+     - utopic
+     - vivid
+     - wily
+     - xenial
 
   galaxy_tags: [postgresql]
 
